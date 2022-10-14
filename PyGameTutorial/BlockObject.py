@@ -1,15 +1,14 @@
-from re import X
 from pygame import Rect
 from Sprite import Sprite
 
 class BlockObject(object):
 
-  def __init__(self,blocks,x,y,gfx):
-    self.sprites=[]
+  def __init__(self, blocks, x, y, gfx):
+    self.sprites = []
     self.blocks = blocks
-    self.isDropping=False
-    self.rot =0
-    self.gfx= gfx
+    self.isDropping = False
+    self.rot = 0
+    self.gfx = gfx
 
     self.Rect = Rect(
         x,
@@ -25,12 +24,10 @@ class BlockObject(object):
       for s in self.sprites:
           s.R.y+= 16
 
-
   def MoveUp(self):
       self.Rect.y-= 16
       for s in self.sprites:
           s.R.y-= 16
-
 
   def MoveHori(self,dx):
       self.Rect.x+= dx*16
@@ -52,8 +49,7 @@ class BlockObject(object):
     return (minx,miny)
 
   def MakeSprites(self):
-    self.sprites=[]
-
+    self.sprites = []
 
     for y in range(0,len(self.blocks[self.rot])):
         yrow = self.blocks[self.rot][y]
@@ -73,8 +69,8 @@ class BlockObject(object):
                 s.R.x = x * 16
                 s.R.y = y * 16
 
-                s.R.x+=self.Rect.x
-                s.R.y+=self.Rect.y
+                s.R.x += self.Rect.x
+                s.R.y += self.Rect.y
 
                 self.sprites.append(s)
 
@@ -92,9 +88,3 @@ class BlockObject(object):
         self.rot= len(self.blocks)-1
 
     self.MakeSprites()
-
-
-
-
-
-

@@ -1,4 +1,3 @@
-
 import pygame
 
 class Sprite(object):
@@ -18,11 +17,11 @@ class Sprite(object):
 
         self.frame = 0.0
         self.animationSpeed = 10.0
-        self.hidden=False
+        self.hidden = False
 
     def MoveFrame(self,frametime):
         
-        self.frame += frametime * self.animationSpeed;
+        self.frame += frametime * self.animationSpeed
 
         if self.frame >= len(self.frames):
            self.frame = 0

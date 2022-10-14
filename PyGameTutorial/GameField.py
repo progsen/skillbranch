@@ -8,10 +8,10 @@ class FieldBlock(object):
 
 class GameField(object):
     def __init__(self,sx,sy):
-        self.F=[]
-        self.sx=sx
-        self.sy=sy
-        self.blocksize=16
+        self.F = []
+        self.sx = sx
+        self.sy = sy
+        self.blocksize = 16
 
         for y in range(24):
             self.F.append([])
