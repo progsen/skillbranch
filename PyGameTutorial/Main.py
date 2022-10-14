@@ -69,7 +69,7 @@ if __name__ == '__main__':
     while running:  
 
         # update the title every frame
-        pygame.display.set_caption(f"Can't rotate this | Score: {str(Core.user_score)}")
+        pygame.display.set_caption(f"Can't rotate this | Score: {str(Core.user_score+1)}")
     
         newticks = pygame.time.get_ticks()
         gc.frameticks= newticks - gc.ticks
@@ -79,10 +79,10 @@ if __name__ == '__main__':
             if event.type == pygame.KEYDOWN:
                 handleKey(event, True)
             
-            if event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYUP:
                 handleKey(event, False)
 
-            if event.type == pygame.QUIT:  
+            elif event.type == pygame.QUIT:  
                 running = False
 
         logic.doLogic()
@@ -93,4 +93,4 @@ if __name__ == '__main__':
         gc.frametime = 0.033
         
     pygame.quit()
-    sys.exit()
+    sys.exit(f'\n\n\nYour final score: {str(Core.user_score+1)}')

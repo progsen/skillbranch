@@ -30,10 +30,10 @@ class BlockObject(object):
           s.R.y-= 16
 
   def MoveHori(self,dx):
-      self.Rect.x+= dx*16
+      self.Rect.x+= dx * 16
 
       for s in self.sprites:
-          s.R.x+= dx*16
+          s.R.x+= dx * 16
 
   def TopLeft(self):
     minx = 90000
@@ -46,15 +46,15 @@ class BlockObject(object):
         if s.R.y < miny:
             miny = s.R.y
 
-    return (minx,miny)
+    return minx, miny
 
   def MakeSprites(self):
     self.sprites = []
 
-    for y in range(0,len(self.blocks[self.rot])):
+    for y in range(len(self.blocks[self.rot])):
         yrow = self.blocks[self.rot][y]
 
-        for x in range(0,len(yrow)):
+        for x in range(len(yrow)):
 
             if yrow[x] == 1:
 
@@ -79,12 +79,12 @@ class BlockObject(object):
         self.rot -= 1
 
     else:
-        self.rot+= 1
+        self.rot += 1
 
     if self.rot >= len(self.blocks):
-        self.rot =0
+        self.rot = 0
 
     elif self.rot < 0:
-        self.rot= len(self.blocks)-1
+        self.rot = len(self.blocks)-1
 
     self.MakeSprites()

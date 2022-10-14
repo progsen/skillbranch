@@ -1,9 +1,9 @@
 class GameLogic(object):
     def __init__(self, gc):
-        self.gc=gc
+        self.gc = gc
        
     def stopInput(self):
-        self.gc.inputdown=3
+        self.gc.inputdown = 3
     
     def InverseBlockMovement(self,block,dx,dy):
         if dy == 1:
@@ -12,7 +12,7 @@ class GameLogic(object):
         if dx == -1:
             block.MoveHori(1)
 
-        if dx == 1:
+        elif dx == 1:
             block.MoveHori(-1)
 
     def CheckBlockCollisions(self,block,dx,dy):
@@ -20,7 +20,7 @@ class GameLogic(object):
         if self.gc.field.Overlaps(block):
             self.InverseBlockMovement(block,dx,dy)
 
-            if(dx == 0): # downward movement found overlap = stuck
+            if dx == 0 : # downward movement found overlap = stuck
                 self.LockCurrentBlock()
 
         elif self.gc.field.MovedOutsideHori(block):
@@ -42,10 +42,10 @@ class GameLogic(object):
 
         self.gc.lineDown = self.gc.field.GetLineDown(self.gc.currentBlock)
 
-        if(len(self.gc.lineDown)>0):
-            self.gc.lineDownCycle=10
+        if len(self.gc.lineDown) > 0:
+            self.gc.lineDownCycle = 10
 
-        print("self.gc. lineDown",self.gc. lineDown)
+        print("self.gc.lineDown",self.gc.lineDown)
 
         self.gc.RandomNewBlock()
 
@@ -64,7 +64,7 @@ class GameLogic(object):
                 gc.lineDown=[]
             return
 
-        if(gc.inputdown > 0):
+        if gc.inputdown > 0:
             gc.inputdown-=1
 
         if gc.downcount <= 0 and gc.currentBlock.isDropping == False:
@@ -79,22 +79,11 @@ class GameLogic(object):
             gc.currentBlock.MoveHori(1)
             self.CheckBlockCollisions(gc.currentBlock,1,0)
             self.stopInput()
-            #gc.player.R.x+=1
 
         if gc.leftDown and gc.inputdown == 0:
             gc.currentBlock.MoveHori(-1)
             self.CheckBlockCollisions(gc.currentBlock,-1,0)
             self.stopInput()
-            #gc.player.R.x-=1
-            
-        if gc.rotL and gc.inputdown == 0:
-            self.rotateCurrent(True)
-
-        if gc.rotR and gc.inputdown == 0:
-            self.rotateCurrent(False)
-
-        #if gc.upDown:
-            #gc.player.R.y-=1
 
         if gc.downDown:
             gc.currentBlock.isDropping = True
@@ -108,18 +97,5 @@ class GameLogic(object):
 
         if self.gc.field.Overlaps(block):
             self.gc.currentBlock.Rotate(left==False)
-            #if(dx == 0):
-            #    self.LockCurrentBlock()
 
-        elif self.gc.field.MovedOutsideHori(block):
-            self.gc.currentBlock.Rotate(left==False)
-
-        elif self.gc.field.MovedOutsideVerti(block):
-            self.gc.currentBlock.Rotate(left==False)
-            self.LockCurrentBlock()
-            
         self.stopInput()
-
-
-
-

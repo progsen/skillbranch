@@ -47,7 +47,7 @@ class GameField(object):
         row = self.F[rowI]
 
         Core.user_score += 1
-        for x in range(0,len(row)):
+        for x in range(len(row)):
             row[x].sprite = NULL
 
     def ClearLines(self,lineDown):
@@ -63,7 +63,7 @@ class GameField(object):
         for r in reversed(range(1,rowI+1)):
             y =  self.sy + (r*self.blocksize)
 
-            for x in range(0,len(self.F[r])):
+            for x in range(len(self.F[r])):
                 self.F[r][x].sprite = self.F[r-1][x].sprite
 
                 if self.F[r][x].sprite:
@@ -95,7 +95,7 @@ class GameField(object):
                     count+=1
 
             if count == len(row):
-                print("linecomplete")
+                print("line complete")
                 linesDown.append( self.F.index(row))
 
         print(linesDown)

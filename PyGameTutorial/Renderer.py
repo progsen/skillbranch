@@ -8,6 +8,7 @@ class Renderer(object):
         self.g = g
         self.image = pygame.image.load('sprites.png')
         self.font1 = pygame.font.SysFont('freesanbold.ttf', 50)
+
         self.empty = Sprite()
         self.empty.frames=[pygame.Rect(2, 75, 16, 16)]
     
@@ -15,7 +16,8 @@ class Renderer(object):
         
         gc = self.gc
         for row in gc.field.F:
-            blink=False
+
+            blink = False
 
             if gc.field.F.index(row) in gc.lineDown:
                 blink = gc.lineDownCycle % 2 == 0
@@ -26,7 +28,6 @@ class Renderer(object):
                 self.RenderObject(self.empty)
 
                 if r.sprite and not blink:
-
                     self.RenderObject(r.sprite)
 
 
