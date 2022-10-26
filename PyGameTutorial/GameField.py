@@ -33,7 +33,7 @@ class GameField(object):
     def ClearLine(self,rowI):
             row = self.F[rowI]
             for x in range(0,len(row)):
-                row[x].sprite=NULL
+                row[x].sprite=None
 
     def ClearLines(self,lineDown):
         self.printField()
