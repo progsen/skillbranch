@@ -1,0 +1,7 @@
+**bin
+**obj
+**build
+**.vs
+**packages
+**/csproj.user
+**__pycache__
